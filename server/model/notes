@@ -1,0 +1,17 @@
+This will be used for the databse. It will have a break down of 
+how the tables are structured might contain SQL code - I need to check this.
+
+This will have the logic for quering the database. Queries against the schema
+
+It may also have a pool that we will use for the different processes. 
+
+const pool = new Pool({
+    user: process.env.DB_USERNAME,
+    host: process.env.DB_HOST,
+    database: process.env.DATABASE,
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT,
+});
+
+module.exports = pool;
+

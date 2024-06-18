@@ -1,0 +1,16 @@
+This folder will be used to define my routes. This includes
+login
+logout
+products (name and category)
+register
+category
+users history
+
+We will need to get the controllers for these for isntance
+
+const loginRouter = express.Router();
+loginRouter.post('/', authenticateUser);
+
+authenticareUser will need to be imported from the controllers
+
+We will then export the all and make available to the server.js file.

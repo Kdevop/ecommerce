@@ -1,0 +1,12 @@
+This will have all of the controlers to be exported to the routes for processing
+It will require the queries from the model file in order to processing
+
+So then the routes will call this section for the file path in the browser. Then will then do the processing, calling the queries from the model.
+
+To include 
+cart
+login
+products
+register
+users
+utils - credit card check
