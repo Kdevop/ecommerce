@@ -9,7 +9,7 @@ function App() {
         <p>
           Something <strong>Awesome</strong> here soon!
         </p>
-        <p>This is a test of the new branch</p>
+        
         <a
           className="App-link"
           href="https://reactjs.org"
