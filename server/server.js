@@ -2,6 +2,7 @@ const express = require('express');
 require('dotenv').config()
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const passport = require('passport');
 const { signinRouter, logoutRouter, registerRouter, orderRouter, userRouter } = require('./routes/userRoute');
 const {productRouter} = require('./routes/productRoute');
 const {cartRouter} = require('./routes/cartRoute');

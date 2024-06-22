@@ -7,9 +7,12 @@ const pool = new Pool({
     database: DB.DB_DATABASE,
     password: DB.DB_PASSWORD,
     port: DB.DB_PORT
-})
+});
 
-export const query = (text, params ) => pool.query(text, params);
+
+module.exports = {
+    query: (text, params) => pool.query(text, params)
+};
 
 
 // You can replace the line above with the below when the time comes to check 
@@ -21,3 +24,4 @@ export const query = (text, params ) => pool.query(text, params);
 //     console.log('executed query', { text, duration, rows: res.rowCount })
 //     return res
 //   }
+
