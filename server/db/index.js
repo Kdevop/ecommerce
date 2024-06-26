@@ -9,8 +9,9 @@ const pool = new Pool({
     port: DB.DB_PORT
 })
 
-export const query = (text, params ) => pool.query(text, params);
+const query = (text, params ) => pool.query(text, params);
 
+module.exports = {query};
 
 // You can replace the line above with the below when the time comes to check 
 // all the queries that go to the databse
