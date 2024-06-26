@@ -4,7 +4,7 @@ const querySchema = {name: 'products', category: '', products: ''};
 const productsQueries = new Queries(querySchema);
 
 const getAllProducts = (req, res) => {
-    productsQueries.getAllFromSchema()
+    productsQueries.getAllFromScheme()
     .then(data => res.send(data));
 };
 
