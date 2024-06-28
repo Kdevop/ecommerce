@@ -1,5 +1,5 @@
 const express = require('express');
-const {registerUser, getUserDetails, updateUser} = require('../controllers/user')
+const {registerUser, getUserDetails, updateUser, userOrders, orderDetails} = require('../controllers/user')
 const passport = require('passport');
 // controlers to be imported for CRUD below is just the API end point
 
@@ -49,9 +49,9 @@ registerRouter.post('/', registerUser); //crud operation to be added for logout
 
 const orderRouter = express.Router();
 //end point for user pruchase history
-orderRouter.get('/', );
+orderRouter.get('/:userId', userOrders);
 // end point for details on a spefic order
-orderRouter.get(`/:orderId`, );
+orderRouter.get(`/:orderId`, orderDetails);
 
 const userRouter = express.Router();
 //end point for user details
