@@ -1,0 +1,35 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    background-color: #FFFFFF;
+    margin: -7.5px;
+}
+
+.btncontainer {
+    width: 180px;
+    display: flex;
+    flex-direction: row;
+    
+
+}
+
+.navbar img {
+    height: 60px;
+}
+
+.button {
+    gap: 3px;
+    width: 60px;
+}
+
+.menu_container {
+    float: right;
+    margin-right: 150px;
+    width: 180px;
+}
+
+/* .menu {
+    float: right;
+} */
+
