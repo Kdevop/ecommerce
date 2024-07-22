@@ -5,10 +5,10 @@ const Queries = require('../db/queries');
 // const registerQueries = new Queries(querySchema);
 // const userQueries = new Queries(querySchema);
 
-const registerQuerySchema = { name: 'register', userDetails: '' };
+
 const userQuerySchema = { name: 'user', userDetails: '' };
 const ordersQuerySchema = { name: 'orders', userDetails: '' };
-const registerQueries = new Queries(registerQuerySchema);
+
 const userQueries = new Queries(userQuerySchema);
 const ordersQueries = new Queries(ordersQuerySchema);
 
@@ -26,15 +26,18 @@ const registerUser = async (req, res) => {
         return res.status(400).json({ success: false, message: 'Invalid email format' });
     }
 
-    // Input validation
+    //Input validation
     if (!password || !email || !first_name || !last_name) {
-        return res.status(400).json({ success: false, message: 'All fields are required' });
+        return res.status(400).json({ success: false, message: 'All fields are required - failed at user.js' });
     }
 
     try {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
         const userDetails = { hashedPassword, email, first_name, last_name };
+        
+        const registerQuerySchema = { name: 'register', userDetails };
+        const registerQueries = new Queries(registerQuerySchema);
 
         const data = await registerQueries.registerUser(userDetails);
 
@@ -44,6 +47,7 @@ const registerUser = async (req, res) => {
             res.status(200).json({ success: true, message: 'You are successfully registered!' });
         } else {
             res.status(400).json({ success: false, message: data.message });
+            
         }
     } catch (error) {
         res.status(500).json({ success: false, message: 'An error occurred during registration.' });

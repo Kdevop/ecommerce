@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faUser, faBars } from '@fortawesome/free-solid-svg-icons';
 
 
+
 function Header() {
     const [isOpenCat, setIsOpenCat] = useState(false);
     const [isOpenAcc, setIsOpenAcc] = useState(false);

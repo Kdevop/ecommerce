@@ -12,28 +12,30 @@ const cors = require('cors');
 const { signinRouter, logoutRouter, registerRouter, orderRouter, userRouter } = require('./routes/userRoute');
 const {productRouter} = require('./routes/productRoute');
 const {cartRouter} = require('./routes/cartRoute');
-const { DB, SS } = require('./config.js');
+const { DB, SS } = require('./config');
 
 //server setup
 const app = express();
 
 app.use(cors());
 app.use(helmet());
-const mysqlStore = require('express-mysql-session')(session);
+const pgSession = require('connect-pg-simple')(session);
 const { PORT } = require('./config');
 const port = PORT || 3001;
 const IN_PROD = SS.SS_NODE_ENV === 'production';
 
 const options = {
-    user: DB.DB_USER,
-    host: DB.DB_HOST,
-    database: DB.DB_DATABASE,
-    password: DB.DB_PASSWORD,
-    port: DB.DB_PORT,
+    user: DB.DB_USER, 
+    host:DB.DB_HOST, 
+    database:DB.DB_DATABASE, 
+    password: DB.DB_PASSWORD, 
+    port:DB.DB_PORT, 
     createDatabaseTable: true,
-}
+    createTableIfMissing: true
+};
 
-const sessionStore = new mysqlStore(options);
+console.log(options);
+const sessionStore = new pgSession(options);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true,}));
@@ -44,9 +46,9 @@ app.use(session({
     store: sessionStore,
     secret: SS.SS_SESS_SECRET,
     cookie: {
-        maxAge: SS.SS_SESS_LIFETIME,
+        maxAge: Number(SS.SS_SESS_LIFETIME),
         sameSite: true,
-        secure: IN_PROD
+        secure: false,
     }
 }));
 

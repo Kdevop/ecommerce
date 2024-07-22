@@ -1,6 +1,6 @@
 const dotenv = require('dotenv');
 
-dotenv.config();
+dotenv.config({ path: '/.env'});
 
 module.exports = {
     PORT: process.env.PORT,
@@ -8,8 +8,8 @@ module.exports = {
         DB_USER: process.env.DB_USER,
         DB_PASSWORD: process.env.DB_PASSWORD,
         DB_HOST: process.env.DB_HOST,
-        DB_PORT: process.env.DB_POST,
-        DB_DATABASE: process.env.DB_DATABASE
+        DB_PORT: process.env.DB_PORT,
+        DB_DATABASE: process.env.DB_DATABASE,
     },
     SS: {
         SS_SESS_LIFETIME: process.env.SESS_LIFETIME,
@@ -19,4 +19,5 @@ module.exports = {
     }
 };
 
+console.log("config.js reads " + process.env.DB_USER)
 

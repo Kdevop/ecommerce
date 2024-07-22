@@ -1,3 +1,4 @@
+require('dotenv').config();
 const pool = require('./index');
 const bcrypt = require('bcrypt');
 
@@ -7,11 +8,11 @@ class Queries {
     }
 
     async registerUser() {
-        const { hashedPassword, firstName, lastName, email } = this.schema.userDetails;
+        const { hashedPassword, email, first_name, last_name } = this.schema.userDetails;
 
         // Input validation
-        if (!hashedPassword || !firstName || !lastName || !email) {
-            return { error: true, message: "All fields are required" };
+        if (!hashedPassword || !email || !first_name || !last_name) {
+            return { error: true, message: "All fields are required - failed at db.queries." };
         }
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -22,7 +23,7 @@ class Queries {
         try {
             const user = await pool.query(
                 `INSERT INTO "user" ("Password", "Email", "first_name", "last_name") VALUES($1, $2, $3, $4) RETURNING "id"`,
-                [hashedPassword, email, firstName, lastName]
+                [hashedPassword, email, first_name, last_name]
             );
             return { error: false, data: user.rows[0] };
         } catch (err) {
@@ -31,6 +32,7 @@ class Queries {
     }
 
     async getAllFromSchema() {
+        
         try {
             const query = `SELECT * FROM ${this.schema.name}`;
             const products = await pool.query(query);
