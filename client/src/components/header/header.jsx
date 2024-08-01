@@ -1,18 +1,27 @@
-import react, { useState } from 'react';
+// dependency imports
+import react, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
+import ReactDOM from 'react-dom';
+import { useLocation } from 'react-router-dom';
+
+// styles, images and logos imports
 import styles from '../header/header.module.css';
 import logo from '../../assets/logo2.jpg';
 import logo_name from '../../assets/logo_name.jpg';
-import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartShopping, faUser, faBars } from '@fortawesome/free-solid-svg-icons';
+
+// compoenent imports
 import SearchBar from '../search/search';
 import AccountMenu from '../accountMenu/accountMenu';
 import Cart from '../cart/cardCard';
-import ReactDOM from 'react-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping, faUser, faBars } from '@fortawesome/free-solid-svg-icons';
+
+
 
 
 
 function Header() {
+    const location = useLocation();
     const [isOpenCat, setIsOpenCat] = useState(false);
     const [isOpenAcc, setIsOpenAcc] = useState(false);
     const [isOpenCart, setIsOpenCart] = useState(false);
