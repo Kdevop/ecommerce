@@ -1,0 +1,16 @@
+/* grid details to go here */
+.home {
+    width: 100%;
+    display: grid;
+    margin-top: 25px;
+    margin-left: 35px;
+    grid-template-columns: repeat(12, 1fr);
+}
+
+.productcontainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns with equal width */
+    grid-gap: 20px; /* Spacing between grid items */
+    grid-column: 2 / span 10;
+}
+
